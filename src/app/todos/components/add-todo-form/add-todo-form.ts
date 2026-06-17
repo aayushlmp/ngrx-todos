@@ -26,6 +26,9 @@ export class AddTodoForm implements OnChanges{
     submit(this.addTodoForm, async (field) => {
       if(field().invalid()) return;
       this.submitTodo(field().value().title);
+      this.addTodoForm().reset({
+        title: ''
+      });
     });
   }
   submitTodo(newTitle: string) {
