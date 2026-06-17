@@ -1,0 +1,86 @@
+<ul class="shadow rounded py-4 px-4">
+  @if (todos().length) {
+    @for (todo of todos(); track todo.id) {
+      <li
+        class="flex flex-row font-sans text-gray-600 justify-between py-2"
+        [class.line-through]="todo.completed"
+      >
+        <div class="flex gap-2">
+          <input
+            type="checkbox"
+            name="completed"
+            [id]="`completed_${todo.id}`"
+            class="cursor-pointer w-[20px]"
+            [checked]="todo.completed"
+            (change)="toggleTodoStatus(todo.id)"
+          />
+          <label [for]="`completed_${todo.id}`" class="text-lg">{{ todo.title }}</label>
+        </div>
+        <div class="flex gap-2 items-center">
+          <svg
+            class="w-[24px] h-[24px] text-gray-800 dark:text-white cursor-pointer"
+            style="color: #4f39f6"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+            (click)="editTodo(todo)"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+            />
+          </svg>
+          <svg
+            class="w-[22px] h-[22px] text-gray-800 dark:text-white cursor-pointer"
+            style="color: #4f39f6"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+            (click)="removeTodo(todo.id)"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
+            />
+          </svg>
+        </div>
+      </li>
+    }
+  } @else {
+    <li class="flex flex-row font-sans text-gray-600 justify-between py-2">
+      No todos, please add at least one
+    </li>
+  }
+</ul>
+<div class="mt-4 flex gap-4">
+  <button
+    class="bg-indigo-600 px-4 py-2 rounded-lg font-medium text-white cursor-pointer"
+    (click)="setTodoFilterKey('all')"
+  >
+    All
+  </button>
+  <button
+    class="bg-indigo-600 px-4 py-2 rounded-lg font-medium text-white cursor-pointer"
+    (click)="setTodoFilterKey('pending')"
+  >
+    Pending
+  </button>
+  <button
+    class="bg-indigo-600 px-4 py-2 rounded-lg font-medium text-white cursor-pointer"
+    (click)="setTodoFilterKey('completed')"
+  >
+    Completed
+  </button>
+</div>
