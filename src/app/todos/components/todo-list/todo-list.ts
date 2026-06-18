@@ -11,6 +11,7 @@ import type { Todo, TodoFilter } from '../../interfaces';
 export class TodoList {
   #todoService = inject(TodoService)
   todos = computed(() => this.#todoService.getFilteredTodos());
+  filterKey = computed(() => this.#todoService.getFilterKey())
   toggleTodoStatus = (id: number) => {
     this.#todoService.toggleTodoStatus(id);
   }

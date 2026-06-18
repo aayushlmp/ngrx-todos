@@ -15,7 +15,10 @@ export class TodoService {
   getTodos() {
     return this.#store.todos() ?? [];
   }
-   getFilteredTodos() {
+  getFilterKey() {
+    return this.#store.filter() ?? 'all'
+  }
+  getFilteredTodos() {
     return this.#store.filterTodos() ?? [];
   }
   getSelectedTodo() {

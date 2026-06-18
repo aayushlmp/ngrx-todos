@@ -66,19 +66,25 @@
 </ul>
 <div class="mt-4 flex gap-4">
   <button
-    class="bg-indigo-600 px-4 py-2 rounded-lg font-medium text-white cursor-pointer"
+    class="px-4 py-2 rounded-lg font-medium cursor-pointer border hover:bg-indigo-600 hover:text-white"
+    [class.bg-indigo-600]="filterKey() === 'all'"
+    [class.text-white]="filterKey() === 'all'"
     (click)="setTodoFilterKey('all')"
   >
     All
   </button>
   <button
-    class="bg-indigo-600 px-4 py-2 rounded-lg font-medium text-white cursor-pointer"
+    class="px-4 py-2 rounded-lg font-medium cursor-pointer border hover:bg-indigo-600 hover:text-white"
+    [class.bg-indigo-600]="filterKey() === 'pending'"
+    [class.text-white]="filterKey() === 'pending'"
     (click)="setTodoFilterKey('pending')"
   >
     Pending
   </button>
   <button
-    class="bg-indigo-600 px-4 py-2 rounded-lg font-medium text-white cursor-pointer"
+    class="px-4 py-2 rounded-lg font-medium cursor-pointer border hover:bg-indigo-600 hover:text-white"
+    [class.bg-indigo-600]="filterKey() === 'completed'"
+    [class.text-white]="filterKey() === 'completed'"
     (click)="setTodoFilterKey('completed')"
   >
     Completed
