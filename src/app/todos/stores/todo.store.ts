@@ -1,7 +1,6 @@
 import { getState, patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals"
 import type { Todo, TodoFilter, TodoState } from "../interfaces";
 import { computed, effect } from "@angular/core";
-import { filter } from "rxjs";
 
 const initialTodoState: TodoState = {
     todos: [],

@@ -3,11 +3,11 @@ import type { Route } from "@angular/router";
 export const todoRoutes: Route[] = [
     {
         path: '',
-        redirectTo:'wrapper',
+        redirectTo:'',
         pathMatch: 'full',
     },
     {
-        path:'wrapper',
+        path:'',
         loadComponent: () => import('../../todos/components/todo-wrapper/todo-wrapper').then(w => w.TodoWrapper)
     }
 ]
